@@ -160,3 +160,27 @@ def actor_filmography(movies):
 average = average_rating(movies)
 above_average_movies = {movie["title"]: movie["rating"]
                         for movie in movies if movie["rating"] > average}
+
+
+def all_genres(movies):
+    genres = set()
+
+    for m in movies:
+        genres.update(m["genres"])
+
+    return genres
+
+
+def common_actors(movie1, movie2):
+    actors = set(movie1["actors"]) & set(movie2["actors"])
+    return actors
+
+
+def genres_only_in_one(movies_a, movies_b):
+    genres_a = set()
+    genres_b = set()
+    for m in movies_a:
+        genres_a.update(m["genres"])
+    for m in movies_b:
+        genres_b.update(m["genres"])
+    return genres_a - genres_b
