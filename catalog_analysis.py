@@ -79,21 +79,21 @@ def decade_label(year):
             return "старые"
 
 
-for m in movies:
-    if "comedy" in m["genres"]:
-        continue
-    print(m["title"])
+def demonstrate_stage_3(movies):
+    for m in movies:
+        if "comedy" in m["genres"]:
+            continue
+        print(m["title"])
 
-
-for catalog in (movies, movies[:7]):
-    i = 0
-    while i < len(catalog):
-        if catalog[i]["rating"] > 9:
-            print(catalog[i]["title"])
-            break
-        i += 1
-    else:
-        print("Шедевров не найдено")
+    for catalog in (movies, movies[:7]):
+        i = 0
+        while i < len(catalog):
+            if catalog[i]["rating"] > 9:
+                print(catalog[i]["title"])
+                break
+            i += 1
+        else:
+            print("Шедевров не найдено")
 
 
 def count_long_movies(movies, threshold=120):
@@ -192,12 +192,12 @@ def iter_high_rated(movies, min_rating=8.0):
             yield m
 
 
-for movie in iter_high_rated(movies):
-    print(format_report_line(movie))
+def demonstrate_stage_8(movies):
+    for movie in iter_high_rated(movies):
+        print(format_report_line(movie))
 
-
-total_duration = sum(m["duration_min"] for m in movies if m["rating"] > 7)
-
+    total_duration = sum(m["duration_min"] for m in movies if m["rating"] > 7)
+    print(total_duration)
 
 
 def build_report(movies):
